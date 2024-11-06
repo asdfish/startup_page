@@ -1,42 +1,58 @@
-body {
-  font-family: monospace;
-  background-color: black;
+@font-face {
+  font-family: "EnvyCodeR";
+  src: url("./fonts/EnvyCodeR/EnvyCodeRNerdFontMono-Regular.ttf");
+}
 
-  padding: 500px;
-  text-align: center;
+body {
+  font-family: "EnvyCodeR";
+
+  background-color: black;
+  /*color: white;*/
+}
+
+canvas {
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 #logo_container {
   white-space: pre;
+
   font-size: 4px;
-  color: white;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
 }
 
 /* # */
 .\23 {
-  background-color: #A243E9;
+  color: #A243E9;
 }
 
 /* + */
 .\2b {
-  background-color: #FF8B16;
+  color: #FF8B16;
 }
 
 
 .x {
-  background-color: #FF3846;
+  color: #FF3846;
 }
 
 .X {
-  background-color: #E41067;
+  color: #E41067;
 }
 
 /* : */
 .\3a {
-  background-color: #FFE948;
+  color: #FFE948;
 }
 
 /* ; */
 .\3b {
-  background-color: #FFB522;
+  color: #FFB522;
 }
