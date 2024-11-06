@@ -1,7 +1,42 @@
 body {
   font-family: monospace;
+  background-color: black;
+
+  padding: 500px;
+  text-align: center;
 }
 
 #logo_container {
   white-space: pre;
+  font-size: 4px;
+  color: white;
+}
+
+/* # */
+.\23 {
+  background-color: #A243E9;
+}
+
+/* + */
+.\2b {
+  background-color: #FF8B16;
+}
+
+
+.x {
+  background-color: #FF3846;
+}
+
+.X {
+  background-color: #E41067;
+}
+
+/* : */
+.\3a {
+  background-color: #FFE948;
+}
+
+/* ; */
+.\3b {
+  background-color: #FFB522;
 }
