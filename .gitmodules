@@ -1,0 +1,3 @@
+[submodule "fonts/0xProto"]
+	path = fonts/0xProto
+	url = https://github.com/0xType/0xProto

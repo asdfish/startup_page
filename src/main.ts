@@ -1,77 +1,96 @@
 (() => {
-  const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")![0];
-  const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
-  
-  const font: string = "EnvyCodeR";
-  const font_height: number = 20;
+  let main = () => {
+    const canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")![0];
+    const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 
-  ctx.font = String(font_height) + "px " + font;
+    const font: string = "EnvyCodeR";
+    const font_height: number = 20;
 
-  const font_width: number = ctx.measureText("a").width;
+    ctx.font = String(font_height) + "px " + font;
 
-  let grid_width: number = 0;
-  let grid_height: number = 0;
+    const font_width: number = ctx.measureText("a").width;
 
-  const resize = (): void => {
-    grid_width = Math.ceil(innerWidth / font_width);
-    grid_height = Math.ceil(innerHeight / font_height);
+    let grid_width: number = 0;
+    let grid_height: number = 0;
 
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-  };
-  resize();
-  addEventListener("resize", resize);
+    const resize = (): void => {
+      grid_width = Math.ceil(innerWidth / font_width);
+      grid_height = Math.ceil(innerHeight / font_height);
 
-  class FireParticle {
-    x: number = 0;
-    y: number = 0;
-    health: number = 30;
-    alive: boolean = true;
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    };
+    resize();
+    addEventListener("resize", resize);
 
-    constructor () {
-      this.reset();
-    }
+    class FireParticle {
+      x: number = 0;
+      y: number = 0;
+      health: number = 30;
+      alive: boolean = true;
 
-    update = (): void => {
-      this.health --;
-      if(this.health < 0)
-        this.alive = false;
-    }
-
-    reset = (): void => {
-      this.x = Math.round(Math.random() * grid_width);
-      this.y = canvas.height;
-      this.health = 30;
-      this.alive = true;
-    }
-  }
-
-  let grid: number[][] = [];
-  let particles: FireParticle[] = [];
-
-  let ticks: number = 0;
-
-  const add_new_particle = (): void => {
-    for(let i = 0; i < particles.length; i ++)
-      if(!particles[i].alive) {
-        particles[i].reset();
-        return;
+      constructor () {
+        this.reset();
       }
 
-    particles.push(new FireParticle());
-  }
+      draw = (): void => {
+        ctx.fillStyle = "white"
+        ctx.fillText("a", 0, 0);
+      }
 
-  const loop = (): void => {
-    if(ticks === 30) {
-      add_new_particle();
-      ticks = 0;
+      update = (): void => {
+        if(!this.alive)
+          return;
+
+        this.y --;
+
+        this.health --;
+        if(this.health < 0)
+          this.alive = false;
+      }
+
+      reset = (): void => {
+        this.x = Math.round(Math.random() * grid_width);
+        this.y = canvas.height;
+        this.health = 30;
+        this.alive = true;
+      }
     }
 
-    for(let i = 0; i < particles.length; i ++)
-      particles[i].update();
+    let particles: FireParticle[] = [];
 
-    ticks ++;
+    let ticks: number = 0;
+
+    const add_new_particle = (): void => {
+      for(let i = 0; i < particles.length; i ++) {
+        if(!particles[i].alive) {
+          particles[i].reset();
+          return;
+        }
+      }
+
+      particles.push(new FireParticle());
+    }
+
+    const loop = (): void => {
+      ctx.fillStyle = "white"
+      ctx.fillText("asdkfj", 0, 0)
+      ////ctx.clearRect(0, 0, canvas.width, canvas.height);
+      //
+      //if(ticks === 30) {
+      //  add_new_particle();
+      //  ticks = 0;
+      //}
+      //
+      //for(let i = 0; i < particles.length; i ++) {
+      //  particles[i].update();
+      //  particles[i].draw();
+      //}
+      //
+      //ticks ++;
+      requestAnimationFrame(loop);
+    }
     requestAnimationFrame(loop);
   }
-  requestAnimationFrame(loop);
+  addEventListener("load", main);
 })();
