@@ -54,3 +54,7 @@ const char* logo =
 "                             XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
 "                                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
 "                                        XXXXXXXXXXXXXXXXXXXX\n";
+
+int main(void) {
+  return 0;
+}
